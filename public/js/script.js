@@ -23,6 +23,17 @@ const alertAddCartSusscess = () => {
 }
 // End alert-add-cart-susscess
 
+// Hiển thị số lượng sản phẩm vào mini cart
+const showMiniCart = () => {
+  const miniCart = document.querySelector("[mini-cart]");
+  if(miniCart) {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    miniCart.innerHTML = cart.length;
+  }
+}
+showMiniCart();
+// Hết Hiển thị số lượng sản phẩm vào mini cart
+
 // Giỏ hàng
 
 const cart = localStorage.getItem("cart");
@@ -55,6 +66,8 @@ if(formAddToCart) {
       localStorage.setItem("cart", JSON.stringify(cart));
 
       alertAddCartSusscess();
+
+      showMiniCart();
     }
   })
 }
